@@ -18,5 +18,13 @@
     <ClCompile Include="Ch8Challenge19.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tripleT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tripleT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
