@@ -55,7 +55,7 @@ bool tripleT::checkWinner()
 		{
 			if (board[0][i] != '*')
 			{
-				cout << board[0][i] << "has won!\n";
+				cout << board[0][i] << "'s have won!\n";
 				return true;
 			}
 		}
@@ -67,7 +67,7 @@ bool tripleT::checkWinner()
 		{
 			if (board[i][0] != '*')
 			{
-				cout << board[i][0] << "has won!\n";
+				cout << board[i][0] << "'s have won!\n";
 				return true;
 			}
 		}
@@ -75,10 +75,9 @@ bool tripleT::checkWinner()
 
 	if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]))
 	{
-
 		if (board[0][0] != '*')
 		{
-			cout << board[0][0] << "has won!\n";
+			cout << board[0][0] << "'s have won!\n";
 			return true;
 		}
 	}
@@ -87,7 +86,7 @@ bool tripleT::checkWinner()
 	{
 		if (board[2][0] != '*')
 		{
-			cout << board[2][0] << "has won!\n";
+			cout << board[2][0] << "'s have won!\n";
 			return true;
 		}
 	}

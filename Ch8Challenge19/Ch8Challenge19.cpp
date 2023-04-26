@@ -9,12 +9,9 @@ Date Modified: 01/19/2023, 04/25/2023
 #include "tripleT.h"
 using namespace std;
 
-
 // Function prototypes
-int get_Xrow();
-int get_Xcol();
-int get_Orow();
-int get_Ocol();
+int get_row(int player);
+int get_col(int player);
 int check_input(int choice);
 
 int main()
@@ -31,8 +28,8 @@ int main()
 	
 	for (int i = 0; i < 5; i++) // loop runs 5 times; game necessarily finishes halfway through 5th iteration
 	{
-		x_row = get_Xrow();
-		x_col = get_Xcol();
+		x_row = get_row(1);
+		x_col = get_col(1);
 
 		while (game1.positionFull(x_row, x_col)) // while position is full, ask for new position
 		{
@@ -50,18 +47,23 @@ int main()
 		game1.displayArray();
 
 		if (game1.checkWinner())
+		{
+			cout << "Would you like to play a game of Global Thermonuclear War?\n";
 			break;
-
+		}
 
 		if (i == 4) // this will only run if X's had to make the 9th move and tied
 		{
 			if (game1.checkWinner() == false)
+			{
 				cout << "A tie occured.\n";
-			break;
+				cout << "Would you like to play a game of Global Thermonuclear War?\n";
+				break;
+			}
 		}
 
-		o_row = get_Orow();
-		o_col = get_Ocol();
+		o_row = get_row(2);
+		o_col = get_col(2);
 
 		while (game1.positionFull(o_row, o_col))
 		{
@@ -80,12 +82,9 @@ int main()
 
 		if (game1.checkWinner())
 		{
-			cout << "\nO's have won!\n";
 			cout << "Would you like to play a game of Global Thermonuclear War?\n";
 			break;
 		}
-
-		cout << endl;
 	}
 
 	return 0;
@@ -109,42 +108,39 @@ int check_input(int choice) // This function makes sure the row value used is be
 	return foo;
 }
 
-int get_Xrow() // Ask user 1 for row
+int get_row(int player) // Ask user 1/2 for row
 {
 	int choice;
-	cout << "User 1 (X's), what row will you fill? ";
+	if (player == 1)
+	{
+		cout << "User 1 (X's), what row will you fill? ";
+	}
+	else
+	{
+		cout <<  "User 2 (O's), what row will you fill? ";
+	}
 	cin >> choice;
 	cin.clear();
 	cin.ignore(100, '\n');
+
 	return check_input(choice);
 }
 
-int get_Xcol() // Ask user 1 for col
+int get_col(int player) // Ask user 1/2 for column
 {
 	int choice;
-	cout << "User 1 (X's), what col will you fill? ";
-	cin >> choice;
-	cin.clear();
-	cin.ignore(100, '\n');
-	return check_input(choice);
-}
+	if (player == 1)
+	{
+		cout << "User 1 (X's), what col will you fill? ";
+	}
+	else
+	{
+		cout << "User 2 (O's), what col will you fill? ";
+	}
 
-int get_Orow() // Ask user 2 for row
-{
-	int choice;
-	cout << "User 2 (O's), what row will you fill? ";
 	cin >> choice;
 	cin.clear();
 	cin.ignore(100, '\n');
-	return check_input(choice);
-}
 
-int get_Ocol() // Ask user 2 for column
-{
-	int choice;
-	cout << "User 2 (O's), what col will you fill? ";
-	cin >> choice;
-	cin.clear();
-	cin.ignore(100, '\n');
 	return check_input(choice);
 }
