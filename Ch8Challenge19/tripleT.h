@@ -8,7 +8,6 @@ public:
 	void displayArray();
 	void updateArrayX(int user_row, int user_col);
 	void updateArrayO(int user_row, int user_col);
-	bool checkEmpty(int user_row, int user_col);
-	bool checkWinnerX();
-	bool checkWinnerO();
+	bool positionFull(int user_row, int user_col);
+	bool checkWinner();
 };

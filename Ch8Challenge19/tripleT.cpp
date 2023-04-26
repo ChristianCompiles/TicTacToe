@@ -15,9 +15,9 @@ tripleT::tripleT() // Default constructor initializes the char board array to ha
 
 void tripleT::displayArray() // This will display the array in a 3 x 3 grid 
 {
-	for (int r = 0; r <= 2; r++)
+	for (int r = 0; r < 3; r++)
 	{
-		for (int c = 0; c <= 2; c++)
+		for (int c = 0; c < 3; c++)
 		{
 			cout << board[r][c] << " ";
 		}
@@ -35,116 +35,62 @@ void tripleT::updateArrayO(int user_row, int user_col) // This function will upd
 	board[user_row][user_col] = 'O';
 }
 
-bool tripleT::checkEmpty(int user_row, int user_col) // This function checks the array value at position of user input to determine whether element is "empty" (an asterisk)
+bool tripleT::positionFull(int user_row, int user_col) // This function checks the array value at position of user input to determine whether element is "empty" (an asterisk)
 {
 	if (board[user_row - 1][user_col - 1] == 'X' || board[user_row - 1][user_col - 1] == 'O')
 	{
-		return false;
-	}
-	else
-	{
 		return true;
 	}
-}
-
-bool tripleT::checkWinnerX()
-{
-	// check win by rows
-	if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')
-	{
-		return true;
-	}
-
-	// check win by columns
-	else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')
-	{
-		return true;
-	}
-
-	// check win by diagonal
-	else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X')
-	{
-		return true;
-	}
-
 	else
 	{
 		return false;
 	}
 }
 
-bool tripleT::checkWinnerO()
+bool tripleT::checkWinner()
 {
-	// check win by rows
-	if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O')
+	for (int i = 0; i < 3; i++)
 	{
-		return true;
+		if ((board[0][i] == board[1][i]) && (board[1][i] == board[2][i]))
+		{
+			if (board[0][i] != '*')
+			{
+				cout << board[0][i] << "has won!\n";
+				return true;
+			}
+		}
 	}
 
-	else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O')
+	for (int i = 0; i < 3; i++)
 	{
-		return true;
+		if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2]))
+		{
+			if (board[i][0] != '*')
+			{
+				cout << board[i][0] << "has won!\n";
+				return true;
+			}
+		}
 	}
 
-	else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')
+	if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]))
 	{
-		return true;
+
+		if (board[0][0] != '*')
+		{
+			cout << board[0][0] << "has won!\n";
+			return true;
+		}
 	}
 
-	// check win by columns
-	else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')
+	if ((board[2][0] == board[1][1]) && (board[1][1] == board[0][2]))
 	{
-		return true;
+		if (board[2][0] != '*')
+		{
+			cout << board[2][0] << "has won!\n";
+			return true;
+		}
 	}
 
-	else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')
-	{
-		return true;
-	}
-
-	else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')
-	{
-		return true;
-	}
-
-	// check win by diagonal
-	else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
-	{
-		return true;
-	}
-
-	else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O')
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
+	return false;
 }
