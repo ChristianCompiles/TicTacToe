@@ -129,7 +129,7 @@ int get_Xcol() // Ask user 1 for col
 	return check_input(choice);
 }
 
-int get_Orow() // Ask user 1 for row
+int get_Orow() // Ask user 2 for row
 {
 	int choice;
 	cout << "User 2 (O's), what row will you fill? ";
@@ -139,7 +139,7 @@ int get_Orow() // Ask user 1 for row
 	return check_input(choice);
 }
 
-int get_Ocol() // Ask user 1 for row
+int get_Ocol() // Ask user 2 for column
 {
 	int choice;
 	cout << "User 2 (O's), what col will you fill? ";
